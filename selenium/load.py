@@ -25,6 +25,7 @@ i = random.choice([0, 1, 2, 3, 4, 5, 6, 7])
 
 def request_interceptor(request):
     request.headers['X-Forwarded-For'] = ip_from_countries[i]
+    request.headers['X-Realer-IP'] = ip_from_countries[i]
 
 def try_and_click(driver, by_type, by_path):
     try:
@@ -49,6 +50,7 @@ driver.request_interceptor = request_interceptor
 print("--> HOST: " + HOST)
 print("--> START: " + ROUND)
 print("--> X-Forwarded-For:" + ip_from_countries[i])
+print("--> X-Realer-IP:" + ip_from_countries[i])
 
 try:
     driver.get(HOST)
